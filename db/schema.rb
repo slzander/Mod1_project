@@ -15,6 +15,9 @@ ActiveRecord::Schema.define(version: 2019_10_21_194210) do
   create_table "games", force: :cascade do |t|
     t.integer "user_id"
     t.integer "secret_word_id"
+    t.integer "incorrect_guesses"
+    t.boolean "win?"
+    t.float "score"
     t.index ["secret_word_id"], name: "index_games_on_secret_word_id"
     t.index ["user_id"], name: "index_games_on_user_id"
   end
