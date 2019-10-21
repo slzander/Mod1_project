@@ -1,0 +1,3 @@
+Game.destroy_all
+User.destroy_all
+SecretWord.destroy_all
