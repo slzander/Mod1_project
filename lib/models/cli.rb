@@ -1,6 +1,5 @@
 require 'tty-prompt'
 
-
 class Cli
     attr_accessor :user, :game
 
@@ -40,9 +39,39 @@ class Cli
         self.game = Game.create(user: self.user, secret_word: chosen_word, incorrect_guesses: 0, win?: false, score: 0)
     end
 
-    def display_game
-        puts "hooray! let's play"
+    def show_blanks
+        current_word_split = SecretWord.find(game.secret_word_id).word.split("")
+        i = current_word_split.length
+        while i > 0 do 
+            print "___  "
+            i -= 1
+        end
+        puts ""
     end
+
+    def guess_a_letter
+        response = gets.chomp.downcase
+        possible_letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+        if possible_letters.include?(response)
+            puts 'hooray!'
+
+            
+        elsif response == '*'
+            # show_hint method
+        else
+            puts 'That is not a valid input! Please type any single letter or *'
+            guess_a_letter
+        end
+    end
+
+    def display_game
+        show_blanks
+        puts 'Guess a letter! If you need help, type *, but it will cost you!'
+        guess_a_letter
+        # binding.pry
+
+    end
+
 
 
 
