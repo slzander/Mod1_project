@@ -67,23 +67,49 @@ class Cli
         puts 'good-bye'                 
     end
 
+    def split_word
+        SecretWord.find(game.secret_word_id).word.split("")
+    end
 
-    def show_blanks
-        current_word_split = SecretWord.find(game.secret_word_id).word.split("")
-        i = current_word_split.length
-        while i > 0 do 
-            print "___  "
-            i -= 1
-        end
+    def blanks
+        split_word.map{|letter| letter = "_ "}
+    end
+ 
+    def display_blanks
+        print blanks.join
         puts ""
+    end
+
+    def add_correct_guess(letter_guess)
+        i = 0
+        new_blanks = []
+        while i < split_word.length do
+            if split_word[i] == letter_guess
+                # binding.pry
+                # blanks[i] = letter_guess
+                return new_blanks << letter_guess
+            else
+                new_blanks << "_ "
+            end
+            i += 1
+        end
+        print new_blanks
+    end
+
+    def show_letters
+
     end
 
     def guess_a_letter
         response = gets.chomp.downcase
         possible_letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
         if possible_letters.include?(response)
-            puts 'hooray!'
-
+            if split_word.include?(response)
+                add_correct_guess(response)
+                
+            else
+                puts "oopsie!"
+            end
             
         elsif response == '*'
             # show_hint method
@@ -94,10 +120,11 @@ class Cli
     end
 
     def display_game
-        show_blanks
+        display_blanks
         puts 'Guess a letter! If you need help, type *, but it will cost you!'
-        guess_a_letter
+        puts SecretWord.find(game.secret_word_id).word.split("")
         # binding.pry
+        guess_a_letter
 
     end
 end
