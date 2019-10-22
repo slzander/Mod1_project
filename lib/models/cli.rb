@@ -44,6 +44,26 @@ class Cli
         puts "hooray! let's play"
     end
 
+    def show_shark
+        guesses = self.game.incorrect_guesses
+            if guesses == 0
+                puts '﹏Λ﹏﹏﹏﹏﹏﹏\O/'
+            elsif guesses == 1
+                puts '﹏﹏Λ﹏﹏﹏﹏﹏\O/'
+            elsif guesses == 2
+                puts '﹏﹏﹏Λ﹏﹏﹏﹏\O/'
+            elsif guesses == 3
+                puts '﹏﹏﹏﹏Λ﹏﹏﹏\O/'
+            elsif guesses == 4
+                puts '﹏﹏﹏﹏﹏Λ﹏﹏\O/'
+            elsif guesses == 5
+                puts '﹏﹏﹏﹏﹏﹏Λ﹏\O/'
+            else
+                game_over
+        end
+    end
 
-
+    def game_over
+        puts 'good-bye'                 
+    end
 end
