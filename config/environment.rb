@@ -5,7 +5,7 @@ require 'pry'
 
 
 require_all 'lib'
-
+ActiveRecord::Base.logger = nil
 
 
 

@@ -2,11 +2,12 @@ require 'tty-prompt'
 
 
 class Cli
-    attr_accessor :user, :game
+    attr_accessor :user, :game, :guess
 
-    def initialize(user, game)
+    def initialize(user, game, guess = [])
         @user = user
         @game = game
+        @guess = guess
     end
 
     def start
@@ -15,8 +16,11 @@ class Cli
         user_name = gets.chomp
         self.user = User.create(name: user_name)
         puts "Hi #{user.name}!"
+        wrong_letters = []
         difficulty
         display_game
+        # play_game
+        # guess_a_letter
     end
 
     # def play_or_add
@@ -67,37 +71,87 @@ class Cli
         puts 'good-bye'                 
     end
 
+    def split_word
+        SecretWord.find(game.secret_word_id).word.split("")
+    end
 
-    def show_blanks
-        current_word_split = SecretWord.find(game.secret_word_id).word.split("")
-        i = current_word_split.length
-        while i > 0 do 
-            print "___  "
-            i -= 1
-        end
+    def blanks
+        blanks = split_word.map{|letter| letter = "_ "}
+    end
+ 
+    def display_blanks
+        print blanks.join
         puts ""
+    end
+
+
+
+    def add_correct_guess(letter_guess)
+        i = 0
+        # guess = blanks
+        while i < split_word.length
+            if split_word[i] == letter_guess
+                guess[i] = letter_guess
+            elsif
+                guess[i] = "_ "
+            end
+            i += 1
+        end
+        print guess
+    end
+
+    def show_hint
+        self.game.incorrect_guesses += 1
+        puts "The definition is: #{self.game.secret_word.hint}"
+    end
+
+    def add_incorrect_guess(response)
+        wrong_letters << response
     end
 
     def guess_a_letter
         response = gets.chomp.downcase
         possible_letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
         if possible_letters.include?(response)
-            puts 'hooray!'
-
-            
+            if split_word.include?(response)
+                add_correct_guess(response)
+                win_game?
+            else
+                self.game.incorrect_guesses += 1 
+                add_incorrect_guess(response)
+                end_game?
+            end
         elsif response == '*'
-            # show_hint method
+            show_hint
         else
             puts 'That is not a valid input! Please type any single letter or *'
             guess_a_letter
         end
+        # display_game        
     end
 
     def display_game
-        show_blanks
+        display_blanks
         puts 'Guess a letter! If you need help, type *, but it will cost you!'
-        guess_a_letter
+        print SecretWord.find(game.secret_word_id).word.split("")
+        puts ""
         # binding.pry
+        guess_a_letter
 
     end
+
+    def end_game?
+        if self.game.incorrect_guesses == 6
+            puts "bye!"
+        end
+    end
+    
+    def win_game?
+        if guess.include?("_ ")
+            guess_a_letter
+        else
+            puts "bye"
+        end
+    end
+
 end
