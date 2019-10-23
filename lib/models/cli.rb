@@ -14,11 +14,16 @@ class Cli
     end
 
     def start
-        puts "Welcome to CHOMPMAN"
-        puts "What's your name?"
+        system('clear')
+        puts shark_eating_swimmer_sequence
+        puts "      What's your name?"
+        print "      "
         user_name = gets.chomp
+        system('clear')
         self.user = User.create(name: user_name)
-        puts "Hi #{user.name}!"
+        puts chompman_title
+        puts "      Hi #{user.name}!"
+        puts ""
         wrong_letters = []
         difficulty
         display_game
@@ -33,8 +38,7 @@ class Cli
         easy_array = SecretWord.all.select {|word| word.difficulty == 1}
         medium = SecretWord.all.select {|word| word.difficulty == 2}
         hard = SecretWord.all.select {|word| word.difficulty == 3}
-
-        response = prompt.select("Choose your difficulty", %w(Easy Medium Hard))
+        response = prompt.select("      Choose your difficulty", ["     Easy", "     Medium", "     Hard"])
         if response == "Easy"
             chosen_word = easy_array.sample
         elsif response == "Medium"
@@ -48,17 +52,17 @@ class Cli
     def show_shark
         guesses = self.game.incorrect_guesses
             if guesses == 0
-                puts '﹏)\﹏﹏﹏﹏﹏﹏ヽ(°д°)〴'
+                puts approaching_shark_0
             elsif guesses == 1
-                puts '﹏﹏)\﹏﹏﹏﹏﹏ヽ(°д°)〴'
+                puts approaching_shark_1
             elsif guesses == 2
-                puts '﹏﹏﹏)\﹏﹏﹏﹏ヽ(°д°)〴'
+                puts approaching_shark_2
             elsif guesses == 3
-                puts '﹏﹏﹏﹏)\﹏﹏﹏ヽ(°д°)〴'
+                puts approaching_shark_3
             elsif guesses == 4
-                puts '﹏﹏﹏﹏﹏)\﹏﹏ヽ(°д°)〴'
+                puts approaching_shark_4
             elsif guesses == 5
-                puts '﹏﹏﹏﹏﹏﹏)\﹏ヽ(°д°)〴'
+                puts approaching_shark_5
         end
     end
 
@@ -71,7 +75,7 @@ class Cli
     end
  
     def display_blanks
-        print blanks.join
+        print "         #{blanks.join}"
         puts ""
     end
 
@@ -87,21 +91,21 @@ class Cli
             end
             i += 1
         end
-        # print @@guess.join
-        # puts ""
     end
 
     def guess_a_letter
         response = gets.chomp.downcase
+        system('clear')
         possible_letters = ('a'..'z').to_a
         if possible_letters.include?(response) && @@guess.exclude?(response)
             if split_word.include?(response)
                 add_correct_guess(response)
                 win_game?
             elsif @@incorrect_letters.include?(response)
-                puts 'You must really want to be shark food - you already guessed that letter!'
-                self.game.incorrect_guesses += 1
-                end_game?
+                already_guessed_correct_letter
+                # puts '      You must really want to be shark food - you already guessed that letter!'
+                # self.game.incorrect_guesses += 1
+                # end_game?
             else    
                 self.game.incorrect_guesses += 1 
                  @@incorrect_letters << response 
@@ -110,11 +114,12 @@ class Cli
         elsif response == '*'
             show_hint
             guess_a_letter
-        elsif @@guess.include?(response) || @@incorrect_letters.include?(response)
-            puts 'You already guessed that letter! Guess again'
-            guess_a_letter
+        elsif @@guess.include?(response) #|| @@incorrect_letters.include?(response)
+            already_guessed_incorrect_letter
+            # puts '      You already guessed that letter! Guess again'
+            # guess_a_letter
         else
-            puts 'That is not a valid input! Please type any single letter or *'
+            puts '      That is not a valid input! Please type any single letter or *'
             guess_a_letter
         end
          print @@guess.join
@@ -130,32 +135,81 @@ class Cli
     end
     
     def display_game
+        system('clear')
         show_shark
         display_blanks
-        puts 'Guess a letter! If you need help, type *, but it will cost you!'
+        puts ""
+        puts '      Guess a letter! If you need help, type *, but the shark will get closer!'
         print SecretWord.find(game.secret_word_id).word.split("") #get rid of this later! just so that we can see the word for now...
         puts ""
+        # play_game
         guess_a_letter
     end
 
     def play_game
+        system('clear')
         show_shark
-        # display_blanks
-        puts @@guess.join
+        if @@guess == []
+            display_blanks
+        else
+            puts "      #{@@guess.join}"
+        end
+        puts ''
+        puts '      Guess a letter! If you need help, type *, but the shark will get closer!'
+        puts ''
         display_incorrect_guesses
-        puts "Guess again!"
         guess_a_letter
+    end
+
+    def already_guessed_correct_letter
+        system('clear')
+        show_shark
+        if @@guess == []
+            display_blanks
+        else
+            puts "      #{@@guess.join}"
+        end
+        puts ''
+        puts '      You must really want to be shark food - you already guessed that letter!'
+        puts ''
+        display_incorrect_guesses
+        puts ''
+        self.game.incorrect_guesses += 1
+        # guess_a_letter
+        end_game?
+    end
+
+    def already_guessed_incorrect_letter
+        system('clear')
+        show_shark
+        if @@guess == []
+            display_blanks
+        else
+            puts "      #{@@guess.join}"
+        end
+        puts ''
+        puts '      You already guessed that letter! Guess again'
+        puts ''
+        display_incorrect_guesses
+        self.game.incorrect_guesses += 1
+        # guess_a_letter
+        end_game?
     end
 
     def show_hint
         self.game.incorrect_guesses += 1
-        puts "The definition of this word is: #{self.game.secret_word.hint}"
-        puts 'Guess a letter!'
+        system('clear')
+        show_shark
+        puts "      #{@@guess.join}"
+        puts ''
+        puts "      The definition of this word is: #{self.game.secret_word.hint}"
+        puts '      Guess a letter!'
+        play_game
     end
 
 
     def display_incorrect_guesses
-        puts "Incorrect letters: #{incorrect_letters_string}"
+        puts "      Incorrect letters: #{incorrect_letters_string}"
     end
 
     def add_incorrect_guess(response)
@@ -164,8 +218,9 @@ class Cli
 
     def end_game?
         if self.game.incorrect_guesses == 6
-            puts "you lost!"
+            puts "      you lost!"
         else
+            # reponse = gets.chomp.downcase
             play_game
         end
     end
@@ -174,10 +229,9 @@ class Cli
         if @@guess.include?("_ ")
             play_game
         else
-            puts "You live to swim another day #{user.name}!"
+            puts "      You live to swim another day #{user.name}!"
             final_score
             # store_score
-            binding.pry
         end
     end
 
