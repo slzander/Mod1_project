@@ -2,16 +2,17 @@ require 'tty-prompt'
 
 
 class Cli
-    attr_accessor :user, :game, :guess
+    attr_accessor :user, :game
 
-    def initialize(user, game, guess = [])
+    @@guess = []
+
+    def initialize(user, game)
         @user = user
         @game = game
-        @guess = guess
     end
 
     def start
-        puts "Welcome to the game"
+        puts "Welcome to CHOMPMAN"
         puts "What's your name?"
         user_name = gets.chomp
         self.user = User.create(name: user_name)
@@ -19,8 +20,6 @@ class Cli
         wrong_letters = []
         difficulty
         display_game
-        # play_game
-        # guess_a_letter
     end
 
     # def play_or_add
@@ -33,7 +32,7 @@ class Cli
         medium = SecretWord.all.select {|word| word.difficulty == 2}
         hard = SecretWord.all.select {|word| word.difficulty == 3}
 
-        response = prompt.select("Choose difficulty", %w(Easy Medium Hard))
+        response = prompt.select("Choose your difficulty", %w(Easy Medium Hard))
         if response == "Easy"
             chosen_word = easy_array.sample
         elsif response == "Medium"
@@ -42,10 +41,6 @@ class Cli
             chosen_word = hard.sample
         end
         self.game = Game.create(user: self.user, secret_word: chosen_word, incorrect_guesses: 0, win?: false, score: 0)
-    end
-
-    def display_game
-        puts "hooray! let's play"
     end
 
     def show_shark
@@ -76,7 +71,7 @@ class Cli
     end
 
     def blanks
-        blanks = split_word.map{|letter| letter = "_ "}
+        split_word.map{|letter| letter = "_ "}
     end
  
     def display_blanks
@@ -84,31 +79,22 @@ class Cli
         puts ""
     end
 
-
-
     def add_correct_guess(letter_guess)
         i = 0
-        # guess = blanks
+        if @@guess == []
+            @@guess = blanks
+        end
+        
         while i < split_word.length
             if split_word[i] == letter_guess
-                guess[i] = letter_guess
-            elsif
-                guess[i] = "_ "
+                @@guess[i] = letter_guess
             end
             i += 1
         end
-        print guess
+        print @@guess
+        puts ""
     end
-
-    def show_hint
-        self.game.incorrect_guesses += 1
-        puts "The definition is: #{self.game.secret_word.hint}"
-    end
-
-    def add_incorrect_guess(response)
-        wrong_letters << response
-    end
-
+    
     def guess_a_letter
         response = gets.chomp.downcase
         possible_letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
@@ -127,30 +113,48 @@ class Cli
             puts 'That is not a valid input! Please type any single letter or *'
             guess_a_letter
         end
-        # display_game        
     end
-
+    
     def display_game
+        show_shark
         display_blanks
         puts 'Guess a letter! If you need help, type *, but it will cost you!'
-        print SecretWord.find(game.secret_word_id).word.split("")
+        print SecretWord.find(game.secret_word_id).word.split("") #get rid of this later! just so that we can see the word for now...
         puts ""
-        # binding.pry
         guess_a_letter
+    end
 
+    def play_game
+        show_shark
+        display_incorrect_guesses
+        puts "Guess again!"
+        guess_a_letter
+    end
+
+    def show_hint
+        self.game.incorrect_guesses += 1
+        puts "The definition is: #{self.game.secret_word.hint}"
+    end
+
+    def display_incorrect_guesses
+        puts "Incorrect letters: #{}"
+    end
+
+    def add_incorrect_guess(response)
+        wrong_letters << response
     end
 
     def end_game?
         if self.game.incorrect_guesses == 6
-            puts "bye!"
+            puts "you lost!"
         end
     end
     
     def win_game?
-        if guess.include?("_ ")
-            guess_a_letter
+        if @@guess.include?("_ ")
+            play_game
         else
-            puts "bye"
+            puts "you won!"
         end
     end
 
