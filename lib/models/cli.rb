@@ -48,17 +48,17 @@ class Cli
     def show_shark
         guesses = self.game.incorrect_guesses
             if guesses == 0
-                puts '﹏Λ﹏﹏﹏﹏﹏﹏\O/'
+                puts '﹏)\﹏﹏﹏﹏﹏﹏ヽ(°д°)〴'
             elsif guesses == 1
-                puts '﹏﹏Λ﹏﹏﹏﹏﹏\O/'
+                puts '﹏﹏)\﹏﹏﹏﹏﹏ヽ(°д°)〴'
             elsif guesses == 2
-                puts '﹏﹏﹏Λ﹏﹏﹏﹏\O/'
+                puts '﹏﹏﹏)\﹏﹏﹏﹏ヽ(°д°)〴'
             elsif guesses == 3
-                puts '﹏﹏﹏﹏Λ﹏﹏﹏\O/'
+                puts '﹏﹏﹏﹏)\﹏﹏﹏ヽ(°д°)〴'
             elsif guesses == 4
-                puts '﹏﹏﹏﹏﹏Λ﹏﹏\O/'
+                puts '﹏﹏﹏﹏﹏)\﹏﹏ヽ(°д°)〴'
             elsif guesses == 5
-                puts '﹏﹏﹏﹏﹏﹏Λ﹏\O/'
+                puts '﹏﹏﹏﹏﹏﹏)\﹏ヽ(°д°)〴'
         end
     end
 
