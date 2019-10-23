@@ -87,7 +87,7 @@ class Cli
             end
             i += 1
         end
-        print @@guess
+        print @@guess.join
         puts ""
     end
 
@@ -137,6 +137,8 @@ class Cli
 
     def play_game
         show_shark
+        # display_blanks
+        puts @@guess.join
         display_incorrect_guesses
         puts "Guess again!"
         guess_a_letter
