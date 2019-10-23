@@ -73,6 +73,9 @@ def shark_eating_swimmer_sequence
     sleep(1.00)
     system("clear")
     chompman_title_burp
+    sleep(1.00)
+    system("clear")
+    chompman_title_burp
 end
 
 
@@ -610,10 +613,10 @@ def chompman_title_burp
     puts "                                           WELCOME TO CHOMPMAN!"
     puts ""
     puts ""
-    puts "                                             ^`.             o  o  (burp) "
-    puts "                             ^`              \\  \\          o  o     /   "
-    puts "                             \\ \\             {   \\           o  o  /  "
-    puts "                             {  \\           /     `~~~--__    o   /  "
+    puts "                                             ^`.                 (burp) "
+    puts "                             ^`              \\  \\                 /   "
+    puts "                             \\ \\             {   \\               /  "
+    puts "                             {  \\           /     `~~~--__      /  "
     puts "                             {   \\___----~~'              `~~-_       ______          _____"
     puts "                              \\                         /// a  `~._ _(_||___)________/___"
     puts "                              / /~~~~-, ,__.    ,      ///  __,,,,)         o  ______/    \\ "
@@ -627,7 +630,7 @@ def chompman_title_burp
 end
 
 
-def approaching_shark_1
+def approaching_shark_0
     puts ""
     puts "                                                                                     _"
     puts "                                                                                     \\\\"
@@ -644,7 +647,7 @@ def approaching_shark_1
 end
 
 
-def approaching_shark_2
+def approaching_shark_1
     puts ""
     puts "                                                                                     _"
     puts "                                                                                     \\\\"
@@ -660,7 +663,7 @@ def approaching_shark_2
     puts ""
 end
 
-def approaching_shark_3
+def approaching_shark_2
     puts ""
     puts "                                                                                     _"
     puts "                                                                                     \\\\"
@@ -676,7 +679,7 @@ def approaching_shark_3
     puts ""
 end
 
-def approaching_shark_4
+def approaching_shark_3
     puts ""
     puts "                                                                                     _"
     puts "                                                                                     \\\\"
@@ -692,7 +695,7 @@ def approaching_shark_4
     puts ""
 end
 
-def approaching_shark_5
+def approaching_shark_4
     puts ""
     puts "                                                                                     _"
     puts "                                                                                     \\\\"
@@ -708,7 +711,7 @@ def approaching_shark_5
     puts ""
 end
 
-def approaching_shark_6
+def approaching_shark_5
     puts ""
     puts "                                                                                     _"
     puts "                                                                                     \\\\"
