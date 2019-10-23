@@ -176,6 +176,8 @@ class Cli
         else
             puts "You live to swim another day #{user.name}!"
             final_score
+            # store_score
+            binding.pry
         end
     end
 
@@ -185,9 +187,16 @@ class Cli
         length_bonus = (split_word.uniq.length.to_f * 0.33).round(3)
         difficulty_bonus = self.game.secret_word.difficulty  
         final_score = (score * difficulty_bonus *length_bonus * 1000).to_f.round(3)
-        print "Final score: #{final_score}"
-        binding.pry
+        self.game.score = final_score
+        puts "Final score: #{final_score}"
     end
+
+    # def store_score
+    #     puts 'Enter your initials below to store your score!'
+    #     input = gets.chomp
+    #     HighScore.create(user: self.user, score: self.game., initials: input)
+    #     puts 'thanks!'
+    # end
 end
 
 
