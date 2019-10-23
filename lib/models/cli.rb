@@ -97,7 +97,7 @@ class Cli
     
     def guess_a_letter
         response = gets.chomp.downcase
-        possible_letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+        possible_letters = ('a'..'z').to_a
         if possible_letters.include?(response)
             if split_word.include?(response)
                 add_correct_guess(response)
@@ -109,6 +109,7 @@ class Cli
             end
         elsif response == '*'
             show_hint
+            guess_a_letter
         else
             puts 'That is not a valid input! Please type any single letter or *'
             guess_a_letter
@@ -133,7 +134,7 @@ class Cli
 
     def show_hint
         self.game.incorrect_guesses += 1
-        puts "The definition is: #{self.game.secret_word.hint}"
+        puts "The definition of this word is: #{self.game.secret_word.hint}"
     end
 
     def display_incorrect_guesses
