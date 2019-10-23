@@ -1,6 +1,7 @@
 require 'sinatra/activerecord'
 require 'sqlite3'
 require 'require_all'
+# require 'paint'
 require 'pry'
 
 
