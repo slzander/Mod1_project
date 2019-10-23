@@ -98,15 +98,19 @@ class Cli
             if split_word.include?(response)
                 add_correct_guess(response)
                 win_game?
-            else
+            elsif @@incorrect_letters.include?(response)
+                puts 'You must really want to be shark food - you already guessed that letter!'
+                self.game.incorrect_guesses += 1
+                end_game?
+            else    
                 self.game.incorrect_guesses += 1 
-                @@incorrect_letters << response
+                 @@incorrect_letters << response 
                 end_game?
             end
         elsif response == '*'
             show_hint
             guess_a_letter
-        elsif @@guess.include?(response)
+        elsif @@guess.include?(response) || @@incorrect_letters.include?(response)
             puts 'You already guessed that letter! Guess again'
             guess_a_letter
         else
@@ -114,6 +118,7 @@ class Cli
             guess_a_letter
         end
     end
+
 
     def incorrect_letters_string
         @@incorrect_letters.reduce do |sum, letter|
@@ -140,6 +145,7 @@ class Cli
     def show_hint
         self.game.incorrect_guesses += 1
         puts "The definition of this word is: #{self.game.secret_word.hint}"
+        puts 'Guess a letter!'
     end
 
 
@@ -168,3 +174,8 @@ class Cli
     end
 
 end
+
+
+
+
+
