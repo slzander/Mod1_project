@@ -152,11 +152,4 @@ class Cli
             puts "you won!"
         end
     end
-
-
-
-def game_over
-    puts "You're shark-bait #{user_name}!"
-end
-
 end
