@@ -57,13 +57,7 @@ class Cli
                 puts '﹏﹏﹏﹏﹏Λ﹏﹏\O/'
             elsif guesses == 5
                 puts '﹏﹏﹏﹏﹏﹏Λ﹏\O/'
-            else
-                game_over
         end
-    end
-
-    def game_over
-        puts 'good-bye'                 
     end
 
     def split_word
