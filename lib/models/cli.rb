@@ -87,8 +87,8 @@ class Cli
             end
             i += 1
         end
-        print @@guess.join
-        puts ""
+        # print @@guess.join
+        # puts ""
     end
 
     def guess_a_letter
@@ -117,6 +117,9 @@ class Cli
             puts 'That is not a valid input! Please type any single letter or *'
             guess_a_letter
         end
+         print @@guess.join
+        puts ""
+        guess_a_letter
     end
 
 
@@ -171,10 +174,20 @@ class Cli
         if @@guess.include?("_ ")
             play_game
         else
-            puts "you won!"
+            puts "You live to swim another day #{user.name}!"
+            final_score
         end
     end
 
+
+    def final_score
+        score = 1/(self.game.incorrect_guesses + 1).to_f.round(3)
+        length_bonus = (split_word.uniq.length.to_f * 0.33).round(3)
+        difficulty_bonus = self.game.secret_word.difficulty  
+        final_score = (score * difficulty_bonus *length_bonus * 1000).to_f.round(3)
+        print "Final score: #{final_score}"
+        binding.pry
+    end
 end
 
 
