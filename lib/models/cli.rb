@@ -5,6 +5,8 @@ class Cli
     attr_accessor :user, :game
 
     @@guess = []
+    @@incorrect_letters = []
+
 
     def initialize(user, game)
         @user = user
@@ -88,25 +90,34 @@ class Cli
         print @@guess
         puts ""
     end
-    
+
     def guess_a_letter
         response = gets.chomp.downcase
         possible_letters = ('a'..'z').to_a
-        if possible_letters.include?(response)
+        if possible_letters.include?(response) && @@guess.exclude?(response)
             if split_word.include?(response)
                 add_correct_guess(response)
                 win_game?
             else
                 self.game.incorrect_guesses += 1 
-                add_incorrect_guess(response)
+                @@incorrect_letters << response
                 end_game?
             end
         elsif response == '*'
             show_hint
             guess_a_letter
+        elsif @@guess.include?(response)
+            puts 'You already guessed that letter! Guess again'
+            guess_a_letter
         else
             puts 'That is not a valid input! Please type any single letter or *'
             guess_a_letter
+        end
+    end
+
+    def incorrect_letters_string
+        @@incorrect_letters.reduce do |sum, letter|
+            incorrect_letters_string = "#{sum} #{letter}"
         end
     end
     
@@ -131,8 +142,9 @@ class Cli
         puts "The definition of this word is: #{self.game.secret_word.hint}"
     end
 
+
     def display_incorrect_guesses
-        puts "Incorrect letters: #{}"
+        puts "Incorrect letters: #{incorrect_letters_string}"
     end
 
     def add_incorrect_guess(response)
@@ -142,6 +154,8 @@ class Cli
     def end_game?
         if self.game.incorrect_guesses == 6
             puts "you lost!"
+        else
+            play_game
         end
     end
     
