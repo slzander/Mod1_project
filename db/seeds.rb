@@ -21,7 +21,7 @@ SecretWord.create(word: 'parameter', hint:'A variable in a method definition', d
 SecretWord.create(word: 'argument', hint:'A value that is passed in to a command or function', difficulty: 2)
 SecretWord.create(word: 'command', hint:'An instruction for a computer', difficulty: 2)
 SecretWord.create(word: 'boolean', hint:'A value that is either true or false', difficulty: 2)
-SecretWord.create(word: 'recursion', hint:'When a program has a part that requires the application of the whole,', difficulty: 3)
+SecretWord.create(word: 'recursion', hint:'When a program has a part that requires the application of the whole', difficulty: 3)
 SecretWord.create(word: 'compiler', hint:'A program that converts instructions into a machine-code', difficulty: 2)
 SecretWord.create(word: 'gem', hint:'A software package offering functionalities to ruby programs', difficulty: 1)
 SecretWord.create(word: 'shell', hint:'A user interface for accessing an operating systems services', difficulty: 1)
