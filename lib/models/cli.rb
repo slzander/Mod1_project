@@ -208,18 +208,7 @@ class Cli
         puts "Enter your guess for the word! If you're wrong, the shark will get closer!"
         get_response
         if @@response == self.game.secret_word.word
-            system('clear')
-            show_shark
-            puts "      #{@@guess.join}"
-            puts ''
-            puts "      Definition: #{self.game.secret_word.hint}"
-            puts ''
-            puts "      Congrats #{user.name}! They will live to swim another day!"
-            puts ''
-            final_score
-            puts ''
-            # store_score
-            exit
+            you_win
         else
             self.game.incorrect_guesses += 1
             @@incorrect_letters << @@response
@@ -241,18 +230,33 @@ class Cli
         if @@guess.include?("_ ")
             play_game
         else
-            system('clear')
-            winner_diver_escape_sequence
-            puts ''
-            puts "      Congrats #{user.name}! Your diver will live to swim another day!"
-            puts ''
-            puts "      #{@@guess.join.capitalize}: #{self.game.secret_word.hint}"
-            puts ''
-            final_score
-            puts ''
-            # store_score
-            exit #change this to 'would you like to play again?'
+            you_win
+            # system('clear')
+            # winner_diver_escape_sequence
+            # puts ''
+            # puts "      Congrats #{user.name}! Your diver will live to swim another day!"
+            # puts ''
+            # puts "      #{@@guess.join.capitalize}: #{self.game.secret_word.hint}"
+            # puts ''
+            # final_score
+            # puts ''
+            # # store_score
+            # exit #change this to 'would you like to play again?'
         end
+    end
+
+    def you_win
+        system('clear')
+        winner_diver_escape_sequence
+        puts ''
+        puts "      Congrats #{user.name}! Your diver will live to swim another day!"
+        puts ''
+        puts "      #{@@guess.join.capitalize}: #{self.game.secret_word.hint}"
+        puts ''
+        final_score
+        puts ''
+        # store_score
+        exit #change this to 'would you like to play again?'
     end
 
     def show_shark
@@ -313,23 +317,23 @@ class Cli
         @@response = gets.chomp.downcase
     end
 
-
-
-    def final_score
-        score = 1/(self.game.incorrect_guesses + 1).to_f.round(3)
-        length_bonus = (split_word.uniq.length.to_f * 0.33).round(3)
-        difficulty_bonus = self.game.secret_word.difficulty  
-        final_score = (score * difficulty_bonus *length_bonus * 1000).to_f.round(3)
-        self.game.score = final_score
-        puts "      Final score: #{final_score}"
+    def guess_bonus 
+        if @@guess.count("_ ") == 0
+            guess_bonus = 0.01
+        else
+            guess_bonus = (@@guess.count("_ ") * 0.33).round(3) 
+        end
     end
 
-    # def store_score
-    #     puts 'Enter your initials below to store your score!'
-    #     input = gets.chomp
-    #     HighScore.create(user: self.user, score: self.game., initials: input)
-    #     puts 'thanks!'
-    # end
+    def final_score  
+        score = 1/(self.game.incorrect_guesses + 1).to_f.round(3)
+        length_bonus = (split_word.uniq.length.to_f * 0.33).round(3)
+        difficulty_bonus = self.game.secret_word.difficulty 
+        final_score = (score * (difficulty_bonus + length_bonus + guess_bonus) * 1000).to_f.round(3)
+        self.game.score = final_score
+        binding.pry
+        puts "      Final score: #{final_score}"
+    end
 end
 
 
@@ -337,26 +341,7 @@ end
 
 
 
-# def guess_single_letter
-#     possible_letters = ('a'..'z').to_a
-#     if possible_letters.include?(@@response) && @@guess.exclude?(@@response) #&& @@incorrect_letters.exclude?(@@response)
-#         if split_word.include?(@@response)
-#             add_correct_guess(@@response)
-#             win_game?
-#         elsif @@incorrect_letters.include?(@@response)
-#             already_guessed_letter
-#             # puts '      You must really want to be shark food - you already guessed that letter!'
-#             # self.game.incorrect_guesses += 1
-#             # end_game?
-#         else
-#             add_incorrect_letter(@@response)    
-#             # self.game.incorrect_guesses += 1 
-#             #     @@incorrect_letters << @@response 
-#             end_game?
-#         end
 
-#     end
-# end
 
 
 
