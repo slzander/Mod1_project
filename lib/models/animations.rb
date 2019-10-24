@@ -248,8 +248,6 @@ def shark_eating_swimmer_21
     puts ""
     puts ""
     puts ""
-    puts ""
-    puts ""
     puts "                                                             o  o"
     puts "                                                           o  o"
     puts "                                                             o  o"
@@ -269,8 +267,6 @@ def shark_eating_swimmer_20
     puts ""
     puts ""
     puts ""
-    puts ""
-    puts ""
     puts "                                                             o  o"
     puts "                                                           o  o"
     puts "                                                             o  o"
@@ -286,8 +282,6 @@ def shark_eating_swimmer_20
 end
 
 def shark_eating_swimmer_19
-    puts ""
-    puts ""
     puts ""
     puts ""
     puts ""
@@ -310,8 +304,6 @@ def shark_eating_swimmer_18
     puts ""
     puts ""
     puts ""
-    puts ""
-    puts ""
     puts "                                                             o  o"
     puts "                                                           o  o"
     puts "                                                             o  o"
@@ -328,8 +320,6 @@ end
 
 
 def shark_eating_swimmer_17
-    puts ""
-    puts ""
     puts ""
     puts ""
     puts ""
@@ -352,8 +342,6 @@ def shark_eating_swimmer_16
     puts ""
     puts ""
     puts ""
-    puts ""
-    puts ""
     puts "`.                                                           o  o"
     puts "\  \\                                                        o  o"
     puts "   \\                                                         o  o"
@@ -369,8 +357,6 @@ def shark_eating_swimmer_16
 end
 
 def shark_eating_swimmer_15
-    puts ""
-    puts ""
     puts ""
     puts ""
     puts ""
@@ -392,8 +378,6 @@ def shark_eating_swimmer_14
     puts ""
     puts ""
     puts ""
-    puts ""
-    puts ""
     puts "   ^`.                                                       o  o"
     puts "   \\  \\                                                    o  o"
     puts "   {   \\                                                     o  o"
@@ -409,8 +393,6 @@ def shark_eating_swimmer_14
 end
 
 def shark_eating_swimmer_13
-    puts ""
-    puts ""
     puts ""
     puts ""
     puts ""
@@ -432,8 +414,6 @@ def shark_eating_swimmer_12
     puts ""
     puts ""
     puts ""
-    puts ""
-    puts ""
     puts "         ^`.                                                 o  o"
     puts "         \\  \\                                              o  o"
     puts "         {   \\                                               o  o"
@@ -450,8 +430,6 @@ end
 
 
 def shark_eating_swimmer_11
-    puts ""
-    puts ""
     puts ""
     puts ""
     puts ""
@@ -475,8 +453,6 @@ def shark_eating_swimmer_10
     puts ""
     puts ""
     puts ""
-    puts ""
-    puts ""
     puts "                ^`.                                          o  o"
     puts "^`              \\  \\                                       o  o"
     puts "\\ \\             {   \\                                        o  o"
@@ -491,11 +467,7 @@ def shark_eating_swimmer_10
     puts ""
 end
 
-
-
 def shark_eating_swimmer_9
-    puts ""
-    puts ""
     puts ""
     puts ""
     puts ""
@@ -513,11 +485,7 @@ def shark_eating_swimmer_9
     puts ""
 end
 
-
-
 def shark_eating_swimmer_8
-    puts ""
-    puts ""
     puts ""
     puts ""
     puts ""
@@ -535,10 +503,7 @@ def shark_eating_swimmer_8
     puts ""
 end
 
-
 def shark_eating_swimmer_7
-    puts ""
-    puts ""
     puts ""
     puts ""
     puts ""
@@ -556,11 +521,7 @@ def shark_eating_swimmer_7
     puts ""
 end
 
-
-
 def shark_eating_swimmer_6
-    puts ""
-    puts ""
     puts ""
     puts ""
     puts ""
@@ -578,10 +539,7 @@ def shark_eating_swimmer_6
     puts ""
 end
 
-
 def shark_eating_swimmer_5
-    puts ""
-    puts ""
     puts ""
     puts ""
     puts ""
@@ -605,8 +563,6 @@ def shark_eating_swimmer_4
     puts ""
     puts ""
     puts ""
-    puts ""
-    puts ""
     puts "                               ^`.                           o  o"
     puts "               ^`              \\  \\                        o  o"
     puts "               \\ \\             {   \\                         o  o"
@@ -623,8 +579,6 @@ end
 
 
 def shark_eating_swimmer_3
-    puts ""
-    puts ""
     puts ""
     puts ""
     puts ""
@@ -647,8 +601,6 @@ def shark_eating_swimmer_2
     puts ""
     puts ""
     puts ""
-    puts ""
-    puts ""
     puts "                                     ^`.                     o  o"
     puts "                     ^`              \\  \\                  o  o"
     puts "                     \\ \\             {   \\                   o  o"
@@ -664,8 +616,6 @@ def shark_eating_swimmer_2
 end
 
 def shark_eating_swimmer_1
-    puts ""
-    puts ""
     puts ""
     puts ""
     puts ""
@@ -687,8 +637,6 @@ def shark_eating_swimmer_0
     puts ""
     puts ""
     puts ""
-    puts ""
-    puts ""
     puts "                                         ^`.                 o  o"
     puts "                         ^`              \\  \\              o  o"
     puts "                         \\ \\             {   \\               o  o"
@@ -707,9 +655,7 @@ end
 
 def chompman_title
     puts ""
-    puts ""
     puts "                                           WELCOME TO CHOMPMAN!"
-    puts ""
     puts ""
     puts "                                             ^`.             o  o"
     puts "                             ^`              \\  \\          o  o"
@@ -730,8 +676,6 @@ def chompman_no_title
     puts ""
     puts ""
     puts ""
-    puts ""
-    puts ""
     puts "                                             ^`.             o  o"
     puts "                             ^`              \\  \\          o  o"
     puts "                             \\ \\             {   \\           o  o"
@@ -749,9 +693,7 @@ end
 
 def chompman_title_burp
     puts ""
-    puts ""
     puts "                                           WELCOME TO CHOMPMAN!"
-    puts ""
     puts ""
     puts "                                             ^`.                 (burp) "
     puts "                             ^`              \\  \\                 /   "
@@ -770,9 +712,7 @@ end
 
 def chompman_loser
     puts ""
-    puts ""
     puts "                                                      YOU LOST!"
-    puts ""
     puts ""
     puts "                                             ^`.             o  o"
     puts "                             ^`              \\  \\          o  o"
@@ -790,9 +730,7 @@ end
 
 def chompman_loser_burp
     puts ""
-    puts ""
     puts "                                                      YOU LOST!"
-    puts ""
     puts ""
     puts "                                             ^`.                 (burp) "
     puts "                             ^`              \\  \\                 /   "
@@ -812,9 +750,7 @@ end
 
 def lonely_shark_win
     puts ""
-    puts ""
     puts "                                          CONGRATS! YOU SAVED THE DIVER!"
-    puts ""
     puts ""
     puts "                               ^`."
     puts "               ^`              \\  \\"
@@ -833,8 +769,6 @@ def lonely_shark
     puts ""
     puts ""
     puts ""
-    puts ""
-    puts ""
     puts "                               ^`."
     puts "               ^`              \\  \\"
     puts "               \\ \\             {   \\"
@@ -849,8 +783,6 @@ def lonely_shark
 end
 
 def diver_escape_8
-    puts "                                                                 /|\\"
-    puts ""
     puts ""
     puts ""
     puts ""
@@ -868,8 +800,6 @@ def diver_escape_8
 end
 
 def diver_escape_7
-    puts "                                                                   / /"
-    puts "                                                                  /_/"
     puts "                                                                 /|\\"
     puts ""
     puts ""
@@ -887,8 +817,6 @@ def diver_escape_7
 end
 
 def diver_escape_6
-    puts "                                                           \\ || __          o  ______/    \\"
-    puts "                                                            `~~`   \\ \\------o-'            \\"
     puts "                                                                   / /"
     puts "                                                                  /_/"
     puts "                                                                 /|\\"
@@ -906,8 +834,6 @@ def diver_escape_6
 end
 
 def diver_escape_5
-    puts "                                                             __       ______          _____"
-    puts "                                                           / || \\ _ _(_||___)________/___"
     puts "                                                           \\ || __          o  ______/    \\"
     puts "                                                            `~~`   \\ \\------o-'            \\"
     puts "                                                                   / /"
@@ -925,8 +851,6 @@ def diver_escape_5
 end
 
 def diver_escape_4
-    puts "                                                              o"
-    puts "                                                             "
     puts "                                                             __       ______          _____"
     puts "                                                           / || \\ _ _(_||___)________/___"
     puts "                                                           \\ || __          o  ______/    \\"
@@ -944,8 +868,6 @@ def diver_escape_4
 end
 
 def diver_escape_3
-    puts "                                                           o  o"
-    puts "                                                             o  o"
     puts "                                                              o"
     puts "                                                             "
     puts "                                                             __       ______          _____"
@@ -963,8 +885,6 @@ def diver_escape_3
 end
 
 def diver_escape_2
-    puts ""
-    puts "                                                             o  o"
     puts "                                                           o  o"
     puts "                                                             o  o"
     puts "                                                              o"
@@ -984,8 +904,6 @@ end
 
 def diver_escape_1
     puts ""
-    puts ""
-    puts ""
     puts "                                                             o  o"
     puts "                                                           o  o"
     puts "                               ^`.                           o  o"
@@ -1002,8 +920,6 @@ def diver_escape_1
 end
 
 def diver_escape_0
-    puts ""
-    puts ""
     puts ""
     puts ""
     puts ""
@@ -1034,7 +950,7 @@ def approaching_shark_0
     puts "          |     \\                                                                      \\_(_)_/"
     puts "         /       \\                                                                    .--' '--."
     puts "        /         \\                                                                 /`         `\\"
-    puts "    .-'``'-.,_,.-'``'-.,_,.='``'-.,_,.-'``'-.,_,.='``'-.,_,.-'``'-.,_,.='``'-.,_,.-'``'-.,_,.='``'-.,_,.-'"
+    puts "    .-'``'-.,_,.-'``'-.,_,.='``'-.,_,.-'``'-.,_,.='``'-.,_,.-'``'-.,_,.='``'-.,_,.-'``'-.,_,.='``'-.,_,.-"
     puts ""
 end
 
@@ -1051,7 +967,7 @@ def approaching_shark_1
     puts "                     |     \\                                                           \\_(_)_/"
     puts "                    /       \\                                                         .--' '--."
     puts "                   /         \\                                                      /`         `\\"
-    puts "    .-'``'-.,_,.-'``'-.,_,.='``'-.,_,.-'``'-.,_,.='``'-.,_,.-'``'-.,_,.='``'-.,_,.-'``'-.,_,.='``'-.,_,.-'"
+    puts "    .-'``'-.,_,.-'``'-.,_,.='``'-.,_,.-'``'-.,_,.='``'-.,_,.-'``'-.,_,.='``'-.,_,.-'``'-.,_,.='``'-.,_,.-"
     puts ""
 end
 
@@ -1067,7 +983,7 @@ def approaching_shark_2
     puts "                                |     \\                                                \\_(_)_/"
     puts "                               /       \\                                              .--' '--."
     puts "                              /         \\                                           /`         `\\"
-    puts "    .-'``'-.,_,.-'``'-.,_,.='``'-.,_,.-'``'-.,_,.='``'-.,_,.-'``'-.,_,.='``'-.,_,.-'``'-.,_,.='``'-.,_,.-'"
+    puts "    .-'``'-.,_,.-'``'-.,_,.='``'-.,_,.-'``'-.,_,.='``'-.,_,.-'``'-.,_,.='``'-.,_,.-'``'-.,_,.='``'-.,_,.-"
     puts ""
 end
 
@@ -1083,7 +999,7 @@ def approaching_shark_3
     puts "                                           |     \\                                     \\_(_)_/"
     puts "                                          /       \\                                   .--' '--."
     puts "                                         /         \\                                /`         `\\"
-    puts "    .-'``'-.,_,.-'``'-.,_,.='``'-.,_,.-'``'-.,_,.='``'-.,_,.-'``'-.,_,.='``'-.,_,.-'``'-.,_,.='``'-.,_,.-'"
+    puts "    .-'``'-.,_,.-'``'-.,_,.='``'-.,_,.-'``'-.,_,.='``'-.,_,.-'``'-.,_,.='``'-.,_,.-'``'-.,_,.='``'-.,_,.-"
     puts ""
 end
 
@@ -1099,7 +1015,7 @@ def approaching_shark_4
     puts "                                                      |     \\                          \\_(_)_/"
     puts "                                                     /       \\                        .--' '--."
     puts "                                                    /         \\                     /`         `\\"
-    puts "    .-'``'-.,_,.-'``'-.,_,.='``'-.,_,.-'``'-.,_,.='``'-.,_,.-'``'-.,_,.='``'-.,_,.-'``'-.,_,.='``'-.,_,.-'"
+    puts "    .-'``'-.,_,.-'``'-.,_,.='``'-.,_,.-'``'-.,_,.='``'-.,_,.-'``'-.,_,.='``'-.,_,.-'``'-.,_,.='``'-.,_,.-"
     puts ""
 end
 
@@ -1115,6 +1031,6 @@ def approaching_shark_5
     puts "                                                                 |     \\               \\_(_)_/"
     puts "                                                                /       \\             .--' '--."
     puts "                                                               /         \\          /`         `\\"
-    puts "    .-'``'-.,_,.-'``'-.,_,.='``'-.,_,.-'``'-.,_,.='``'-.,_,.-'``'-.,_,.='``'-.,_,.-'``'-.,_,.='``'-.,_,.-'"
+    puts "    .-'``'-.,_,.-'``'-.,_,.='``'-.,_,.-'``'-.,_,.='``'-.,_,.-'``'-.,_,.='``'-.,_,.-'``'-.,_,.='``'-.,_,.-"
     puts ""
 end
