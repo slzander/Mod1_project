@@ -49,7 +49,7 @@ class Cli
         system('clear')
         puts chompman_title
         puts '      Your diver friend needs your help!'
-        puts '      You will need to solve this word puzzle to save your friend from the shark!'
+        puts '      You will need to solve this word puzzle to save them from the shark!'
         puts ''
         prompt = TTY::Prompt.new
         easy = SecretWord.all.select {|word| word.difficulty == 1}
@@ -154,7 +154,7 @@ class Cli
         puts ''
         display_incorrect_guesses
         puts ''
-        puts '      You must really want to be shark food - you already guessed that letter!'
+        puts '      You must want your friend to be shark bait - you already guessed that letter!'
         puts ''
         puts '      Guess a letter!'
         puts '      If you need a hint, type  ? , but the shark will get closer!'
@@ -166,23 +166,6 @@ class Cli
         get_response
         end_game?
     end
-
-    # def already_guessed_incorrect_letter
-    #     system('clear')
-    #     show_shark
-    #     if @@guess == []
-    #         display_blanks
-    #     else
-    #         puts "      #{@@guess.join}"
-    #     end
-    #     puts ''
-    #     puts '      You already guessed that letter! Press enter to continue'
-    #     puts ''
-    #     display_incorrect_guesses
-    #     self.game.incorrect_guesses += 1
-    #     get_response
-    #     end_game?
-    # end
 
     def invalid_entry
         system('clear')
@@ -278,11 +261,13 @@ class Cli
             @@guess = []
             difficulty
         elsif response == "       Add a new word"
+            @@guess = []
             add_word_to_game
         else
             system('clear')
             puts chompman_no_title
             puts '                                           THANKS FOR PLAYING!'
+            puts ''
             puts ''
             exit
         end
@@ -299,7 +284,6 @@ class Cli
         puts ''
         play_again?
         # store_score
-        # exit #change this to 'would you like to play again?'
     end
 
     def show_shark
