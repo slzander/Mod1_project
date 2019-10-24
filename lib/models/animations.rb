@@ -212,7 +212,7 @@ def winner_diver_escape_sequence
     sleep(1.00)
     system("clear")
     diver_escape_0
-    sleep(1.00)
+    sleep(2.00)
     system("clear")
     diver_escape_1
     sleep(0.05)

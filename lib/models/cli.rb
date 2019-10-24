@@ -259,9 +259,13 @@ class Cli
         response = prompt.select("      What would you like to do?", ["       Play again", "       Add a new word", "       Exit"])
         if response == "       Play again"
             @@guess = []
+            @@incorrect_letters = []
+            @@response = ""
             difficulty
         elsif response == "       Add a new word"
             @@guess = []
+            @@incorrect_letters = []
+            @@response = ""
             add_word_to_game
         else
             system('clear')
@@ -269,6 +273,7 @@ class Cli
             puts '                                           THANKS FOR PLAYING!'
             puts ''
             puts ''
+            pid = fork{exec 'killall', "afplay"}
             exit
         end
     end
