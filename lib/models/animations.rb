@@ -78,6 +78,83 @@ def shark_eating_swimmer_sequence
     chompman_title_burp
 end
 
+def loser_shark_eating_swimmer_sequence
+    system("clear")
+    shark_eating_swimmer_21
+    sleep(1.00)
+    system("clear")
+    shark_eating_swimmer_20
+    sleep(0.05)
+    system("clear")
+    shark_eating_swimmer_19
+    sleep(0.05)
+    system("clear")
+    shark_eating_swimmer_18
+    sleep(0.05)
+    system("clear")
+    shark_eating_swimmer_17
+    sleep(0.05)
+    system("clear")
+    shark_eating_swimmer_16
+    sleep(0.05)
+    system("clear")
+    shark_eating_swimmer_15
+    sleep(0.05)
+    system("clear")
+    shark_eating_swimmer_14
+    sleep(0.05)
+    system("clear")
+    shark_eating_swimmer_13
+    sleep(0.05)
+    system("clear")
+    shark_eating_swimmer_12
+    sleep(0.05)
+    system("clear")
+    shark_eating_swimmer_11
+    sleep(0.05)
+    system("clear")
+    shark_eating_swimmer_10
+    sleep(0.05)
+    system("clear")
+    shark_eating_swimmer_9
+    sleep(0.05)
+    system("clear")
+    shark_eating_swimmer_8
+    sleep(0.05)
+    system("clear")
+    shark_eating_swimmer_7
+    sleep(0.05)
+    system("clear")
+    shark_eating_swimmer_6
+    sleep(0.05)
+    system("clear")
+    shark_eating_swimmer_5
+    sleep(0.05)
+    system("clear")
+    shark_eating_swimmer_4
+    sleep(0.05)
+    system("clear")
+    shark_eating_swimmer_3
+    sleep(0.05)
+    system("clear")
+    shark_eating_swimmer_2
+    sleep(0.05)
+    system("clear")
+    shark_eating_swimmer_1
+    sleep(0.05)
+    system("clear")
+    shark_eating_swimmer_0
+    sleep(0.05)
+    system("clear")
+    chompman_loser
+    sleep(1.00)
+    system("clear")
+    chompman_loser_burp
+    sleep(1.00)
+    system("clear")
+    chompman_loser_burp
+end
+
 
 def shark_eating_swimmer_21
     puts ""
@@ -611,6 +688,51 @@ def chompman_title_burp
     puts ""
     puts ""
     puts "                                           WELCOME TO CHOMPMAN!"
+    puts ""
+    puts ""
+    puts "                                             ^`.                 (burp) "
+    puts "                             ^`              \\  \\                 /   "
+    puts "                             \\ \\             {   \\               /  "
+    puts "                             {  \\           /     `~~~--__      /  "
+    puts "                             {   \\___----~~'              `~~-_       ______          _____"
+    puts "                              \\                         /// a  `~._ _(_||___)________/___"
+    puts "                              / /~~~~-, ,__.    ,      ///  __,,,,)         o  ______/    \\ "
+    puts "                              \\/      \\/    `~~~;   ,---~~-_`~     \\ \\------o-'            \\ "
+    puts "                                               /   /               / /"
+    puts "                                              '._.'               /_/"
+    puts "                                                                 /|\\ "
+    puts ""
+    puts ""
+    puts ""
+end
+
+
+def chompman_loser
+    puts ""
+    puts ""
+    puts "                                                      YOU LOST!"
+    puts ""
+    puts ""
+    puts "                                             ^`.             o  o"
+    puts "                             ^`              \\  \\          o  o"
+    puts "                             \\ \\             {   \\           o  o"
+    puts "                             {  \\           /     `~~~--__    o"
+    puts "                             {   \\___----~~'              `~~-_       ______          _____"
+    puts "                              \\                         /// a  `~._ _(_||___)________/___"
+    puts "                              / /~~~~-, ,__.    ,      ///  __,,,,)         o  ______/    \\ "
+    puts "                              \\/      \\/    `~~~;   ,---~~-_`~     \\ \\------o-'            \\ "
+    puts "                                               /   /               / /"
+    puts "                                              '._.'               /_/"
+    puts "                                                                 /|\\ "
+    puts ""
+    puts ""
+    puts ""
+end
+
+def chompman_loser_burp
+    puts ""
+    puts ""
+    puts "                                                      YOU LOST!"
     puts ""
     puts ""
     puts "                                             ^`.                 (burp) "
