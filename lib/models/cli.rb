@@ -16,7 +16,7 @@ class Cli
 
     def start
         system('clear')
-        # puts shark_eating_swimmer_sequence
+        puts shark_eating_swimmer_sequence
         puts "      What's your name?"
         print "      "
         user_name = gets.chomp
@@ -56,7 +56,7 @@ class Cli
         display_blanks
         puts ""
         puts '      Guess a letter! If you would like to see a hint, type *, but the shark will get closer!'
-        print SecretWord.find(game.secret_word_id).word.split("") #get rid of this later! just so that we can see the word for now...
+        # print SecretWord.find(game.secret_word_id).word.split("") #get rid of this later! just so that we can see the word for now...
         puts ""
         get_response
         guess_a_letter
@@ -81,8 +81,11 @@ class Cli
                 #     @@incorrect_letters << @@response 
                 end_game?
             end
-        elsif @@response == '*'
+        elsif @@response == '?'
             show_hint
+            guess_a_letter
+        elsif @@response == '*'
+            guess_word
             guess_a_letter
         elsif @@guess.include?(@@response) #|| @@incorrect_letters.include?(response)
             already_guessed_letter
