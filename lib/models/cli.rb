@@ -205,7 +205,7 @@ class Cli
 
     def end_game?
         if self.game.incorrect_guesses == 6
-            puts loser_shark_eating_swimmer_sequence
+            loser_shark_eating_swimmer_sequence
             exit #change this to 'would you like to play again?'
         else
             play_game
@@ -217,12 +217,11 @@ class Cli
             play_game
         else
             system('clear')
-            show_shark
-            puts "      #{@@guess.join}"
+            winner_diver_escape_sequence
             puts ''
-            puts "      Definition: #{self.game.secret_word.hint}"
+            puts "      Congrats #{user.name}! Your diver will live to swim another day!"
             puts ''
-            puts "      Congrats #{user.name}! They will live to swim another day!"
+            puts "      #{@@guess.join.capitalize}: #{self.game.secret_word.hint}"
             puts ''
             final_score
             puts ''
