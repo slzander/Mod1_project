@@ -90,6 +90,23 @@ class Cli
         self.game.secret_word = chosen_word
         display_game
     end
+
+    def split_word
+        SecretWord.find(self.game.secret_word_id).word.split("")
+    end
+
+    def blanks
+        split_word.map{|letter| letter = "_ "}
+    end
+
+    def display_blanks
+        print "         #{blanks.join}"
+        puts ""
+    end
+
+    def get_response
+        @@response = gets.chomp.downcase
+    end
     
     def display_game
         system('clear')
@@ -117,6 +134,15 @@ class Cli
             end
         end
 
+
+    def guess_a_letter_prompt
+        puts ''
+        puts '      Guess a letter!'
+        puts '        OR Type  ?  for a hint, but the shark will get closer!'
+        puts '        OR Type  *  to guess the word'
+        print '      '
+    end  
+
     def guess_a_letter
         possible_letters = ('a'..'z').to_a
         if possible_letters.include?(@@response) && @@guess.exclude?(@@response)
@@ -139,6 +165,30 @@ class Cli
         else
             invalid_entry
         end
+    end
+
+    def add_correct_guess(letter_guess)
+        i = 0
+        if @@guess == []
+            @@guess = blanks
+        end
+        
+        while i < split_word.length
+            if split_word[i] == letter_guess
+                @@guess[i] = letter_guess
+            end
+            i += 1
+        end
+    end
+
+    def incorrect_letters_string
+        @@incorrect_letters.reduce do |sum, letter|
+            incorrect_letters_string = "#{sum} #{letter}"
+        end
+    end
+    
+    def display_incorrect_guesses
+        puts "      Incorrect guesses: #{incorrect_letters_string}"
     end
     
     def play_game
@@ -295,109 +345,6 @@ class Cli
             store_score
             exit
         end
-    end
-
-    # def you_win
-    #     @@guess = SecretWord.find(game.secret_word_id).word
-    #     system('clear')
-    #     winner_diver_escape_sequence
-    #     puts ''
-    #     puts "      #{@@guess.capitalize}: #{self.game.secret_word.hint}"
-    #     puts ''
-    #     final_score
-    #     puts ''
-    #     play_again?
-    # end
-
-    # def show_shark
-    #     guesses = self.game.incorrect_guesses
-    #         if guesses == 0
-    #             puts approaching_shark_0
-    #         elsif guesses == 1
-    #             puts approaching_shark_1
-    #         elsif guesses == 2
-    #             puts approaching_shark_2
-    #         elsif guesses == 3
-    #             puts approaching_shark_3
-    #         elsif guesses == 4
-    #             puts approaching_shark_4
-    #         elsif guesses == 5
-    #             puts approaching_shark_5
-    #         end
-    #     end
-        
-        # def add_word_to_game
-        #     system('clear')
-        #     print chompman_title
-        #     print "      Type the word you would like to add:"
-        #     print "    "
-        #     new_word = gets.chomp
-        #     print "      Type the definition for the word:"
-        #     print "       "
-        #     new_definition = gets.chomp
-        #     prompt = TTY::Prompt.new
-        #     new_difficulty = prompt.select("      Rate the difficulty of the word:", ["       Easy", "       Medium", "       Hard"])
-        #     if new_difficulty == "       Easy"
-        #         new_difficulty = 1
-        #     elsif new_difficulty == "       Medium"
-        #         new_difficulty = 2
-        #     else
-        #         new_difficulty = 3
-        #     end
-        #     SecretWord.create(word: new_word, hint: new_definition, difficulty: new_difficulty)
-        #     puts ""
-        #     puts "      Thanks for adding a new word to the game!"
-        #     puts ""
-        #     play_again?
-        # end
-
-    def split_word
-        SecretWord.find(self.game.secret_word_id).word.split("")
-    end
-
-    def blanks
-        split_word.map{|letter| letter = "_ "}
-    end
- 
-    def display_blanks
-        print "         #{blanks.join}"
-        puts ""
-    end
-
-    def guess_a_letter_prompt
-        puts ''
-        puts '      Guess a letter!'
-        puts '        OR Type  ?  for a hint, but the shark will get closer!'
-        puts '        OR Type  *  to guess the word'
-        print '      '
-    end
-
-    def add_correct_guess(letter_guess)
-        i = 0
-        if @@guess == []
-            @@guess = blanks
-        end
-        
-        while i < split_word.length
-            if split_word[i] == letter_guess
-                @@guess[i] = letter_guess
-            end
-            i += 1
-        end
-    end
-
-    def incorrect_letters_string
-        @@incorrect_letters.reduce do |sum, letter|
-            incorrect_letters_string = "#{sum} #{letter}"
-        end
-    end
-    
-        def display_incorrect_guesses
-            puts "      Incorrect guesses: #{incorrect_letters_string}"
-        end
-    
-    def get_response
-        @@response = gets.chomp.downcase
     end
 
     def guess_bonus 
