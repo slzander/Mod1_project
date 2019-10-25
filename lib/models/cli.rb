@@ -21,6 +21,7 @@ class Cli
         print "      "
         user_name = gets.chomp.capitalize
         self.user = User.create(name: user_name)
+        self.game = Game.create(user: self.user, secret_word: nil, incorrect_guesses: 0, win?: false, score: 0)
         welcome_player
     end
 
@@ -61,7 +62,8 @@ class Cli
         else
             chosen_word = hard.sample
         end
-        self.game = Game.create(user: self.user, secret_word: chosen_word, incorrect_guesses: 0, win?: false, score: 0)
+        # self.game = Game.create(user: self.user, secret_word: chosen_word, incorrect_guesses: 0, win?: false, score: 0)
+        self.game.secret_word = chosen_word
         display_game
     end
     
@@ -229,7 +231,7 @@ class Cli
             @@guess = []
             @@incorrect_letters = []
             @@response = ""
-            store_score
+            store_score if 
             add_word_to_game
         else
             system('clear')
