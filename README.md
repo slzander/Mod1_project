@@ -41,7 +41,7 @@ Playing the Game:
 
  |^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^|
  |                                                                                                               |
- | IMPORTANT NOTE: during the game you must press ENTER after your inputs for the  game to register your answers |
+ | IMPORTANT NOTE: During the game you must press ENTER after your inputs for the  game to register your answers |
  |                                                                                                               |
  |v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v|
 
