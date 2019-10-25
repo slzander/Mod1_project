@@ -408,7 +408,7 @@ class Cli
         if best_player == self.user.name
             puts "      Your final score: #{final_score}   Current scoreboard leader: YOU with a score of #{best_score} "
         elsif best_score < final_score
-            puts"      Your final score: #{final_score}   You're the new scoreboard leader! "
+            puts"       Your final score: #{final_score}   You're the new scoreboard leader! "
         else    
             puts "      Your final score: #{final_score}   Current scoreboard leader: #{best_player} #{best_score} "  
         end
