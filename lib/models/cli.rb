@@ -30,8 +30,6 @@ class Cli
         puts "      Hi #{user.name}!"
         puts ""
         play_or_add_word
-        # difficulty
-        # display_game
     end
 
     def play_or_add_word
@@ -71,13 +69,13 @@ class Cli
         system('clear')
         show_shark
         display_blanks
-        puts ""
-        puts '      Guess a letter!'
-        puts '      If you need a hint, type  ? , but the shark will get closer!'
-        puts '      Type  *  if you would like to guess the word'
-        # puts '      Guess a letter! OR type  *  to guess the word. If you need a hint, type  ? , but the shark will get closer!'
+        guess_a_letter_prompt
+        # puts ""
+        # puts '      Guess a letter!'
+        # puts '      If you need a hint, type  ? , but the shark will get closer!'
+        # puts '      Type  *  if you would like to guess the word'
+        # print "      "
         # print SecretWord.find(game.secret_word_id).word.split("") #get rid of this later! just so that we can see the word for now...
-        print "      "
         get_response
         guess_a_letter
     end
@@ -128,12 +126,12 @@ class Cli
         end
         puts ''
         display_incorrect_guesses
-        puts ''
-        puts '      Guess a letter!'
-        puts '      If you need a hint, type  ? , but the shark will get closer!'
-        puts '      Type  *  if you would like to guess the word'
-        # puts '      Guess a letter! OR type  *  to guess the word. If you need a hint, type  ? , but the shark will get closer!'
-        print '      '
+        guess_a_letter_prompt
+        # puts ''
+        # puts '      Guess a letter!'
+        # puts '      If you need a hint, type  ? , but the shark will get closer!'
+        # puts '      Type  *  if you would like to guess the word'
+        # print '      '
         get_response
         guess_a_letter
     end
@@ -146,6 +144,7 @@ class Cli
     def already_guessed_letter
         system('clear')
         show_shark
+        self.game.incorrect_guesses += 1
         if @@guess == []
             display_blanks
         else
@@ -155,14 +154,11 @@ class Cli
         display_incorrect_guesses
         puts ''
         puts '      You must want your friend to be shark bait - you already guessed that letter!'
-        puts ''
-        puts '      Guess a letter!'
-        puts '      If you need a hint, type  ? , but the shark will get closer!'
-        puts '      Type  *  if you would like to guess the word'
-        # puts '      PRESS ENTER TO CONTINUE'
-        # display_incorrect_guesses
-        self.game.incorrect_guesses += 1
-        print "      "
+        guess_a_letter_prompt
+        # puts '      Guess a letter!'
+        # puts '      If you need a hint, type  ? , but the shark will get closer!'
+        # puts '      Type  *  if you would like to guess the word'
+        # print "      "
         get_response
         end_game?
     end
@@ -178,12 +174,13 @@ class Cli
         puts ''
         # display_incorrect_guesses
         puts '      That is not a valid input!'
-        puts ''
-        puts '      Please type one of the following:'
-        puts '          1. a single letter'
-        puts '          2. *   (to guess the word)'
-        puts '          3. ?   (for a hint)'
-        print '      '
+        guess_a_letter_prompt
+        # puts ''
+        # puts '      Please type one of the following:'
+        # puts '          1. a single letter'
+        # puts '          2. *   (to guess the word)'
+        # puts '          3. ?   (for a hint)'
+        # print '      '
         get_response
         guess_a_letter
     end
@@ -203,10 +200,11 @@ class Cli
         end
         puts ''
         puts "      The definition of this word is: #{self.game.secret_word.hint}"
-        puts ''
-        puts '      Guess a letter!'
-        puts '      Type  *  if you would like to guess the word'
-        print "      "
+        guess_a_letter_prompt
+        # puts ''
+        # puts '      Guess a letter!'
+        # puts '      Type  *  if you would like to guess the word'
+        # print "      "
         get_response
         guess_a_letter
     end
@@ -347,6 +345,14 @@ class Cli
     def display_blanks
         print "         #{blanks.join}"
         puts ""
+    end
+
+    def guess_a_letter_prompt
+        puts ''
+        puts '      Guess a letter!'
+        puts '        OR Type  ?  for a hint, but the shark will get closer!'
+        puts '        OR Type  *  to guess the word'
+        print '      '
     end
 
     def add_correct_guess(letter_guess)
