@@ -23,16 +23,18 @@ In order to play the game you will need to:
         - gem "require_all", "~> 2.0"
         - gem 'tty-prompt'
 
-3. Run the command   'rake db:seed'   this will fill a database with the words your game will use. (Note: you will also have an 
+3. Run the command   'rake db:migrate'   this will create the database for your game to use.
+
+4. Run the command   'rake db:seed'   this will fill a database with the words your game will use. (Note: you will also have an 
    opportunity to add your own words to this database when you start the game)
 
-4. Run the command   'ruby runner.rb'   to start the game!
+5. Run the command   'ruby runner.rb'   to start the game!
 
 
 
 Playing the Game:
 
-1. Following the opening animation, you will be asked for your name. 
+1. Following the opening animation, you will be asked for your name.
    Type in what you would like the game to refer to you as, then press ENTER on your keyboard.
 
 2. The following screens will have instructions written out for you based on your choices and keyboard inputs.
