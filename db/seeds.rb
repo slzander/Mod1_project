@@ -31,4 +31,4 @@ SecretWord.create(word: 'dribbleware', hint: 'Slang for software released withou
 SecretWord.create(word: 'refuctoring', hint: 'Slang for taking good code and making it unmaintainable to anyone but yourself', difficulty: 3)
 SecretWord.create(word: 'inheritance', hint: 'The ability for classes to receive the properties and methods of other classes.', difficulty: 3)
     
-    HighScore.create(user_name:'no one', score: 1)
+HighScore.create(user_name:'no one', score: 1)
