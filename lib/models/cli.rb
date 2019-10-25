@@ -258,6 +258,7 @@ class Cli
         hard = SecretWord.all.select {|word| word.difficulty == 3}
         response = prompt.select("      What would you like to do?", ["       Play again", "       Add a new word", "       Exit"])
         if response == "       Play again"
+            store_score
             @@guess = []
             @@incorrect_letters = []
             @@response = ""
@@ -266,6 +267,7 @@ class Cli
             @@guess = []
             @@incorrect_letters = []
             @@response = ""
+            store_score
             add_word_to_game
         else
             system('clear')
@@ -274,6 +276,7 @@ class Cli
             puts ''
             puts ''
             pid = fork{exec 'killall', "afplay"}
+            store_score
             exit
         end
     end
@@ -381,15 +384,36 @@ class Cli
             guess_bonus = (@@guess.count("_ ") * 0.5).round(3) 
         end
     end
+    
+    def store_score
+        HighScore.create(user_name: self.user.name, score: self.game.score)
+    end
 
-    def final_score  
+    def best_player
+        HighScore.order('score').last.user_name
+    end
+
+    def best_score
+        HighScore.order("score").last.score
+    end
+
+   
+
+    def final_score 
         score = 1/(self.game.incorrect_guesses + 1).to_f.round(3)
         length_bonus = (split_word.uniq.length.to_f * 0.33).round(3)
         difficulty_bonus = self.game.secret_word.difficulty 
         final_score = (score * (difficulty_bonus + length_bonus + guess_bonus) * 1000).to_f.round(3)
         self.game.score = final_score
-        puts "      Final score: #{final_score}"
+        if best_player == self.user.name
+            puts "      Your final score: #{final_score}   Current scoreboard leader: YOU with a score of #{best_score} "
+        elsif best_score < final_score
+            puts"      Your final score: #{final_score}   You're the new scoreboard leader! "
+        else    
+            puts "      Your final score: #{final_score}   Current scoreboard leader: #{best_player} #{best_score} "  
+        end
     end
+
 end
 
 
