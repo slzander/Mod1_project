@@ -7,6 +7,8 @@ reading a hint will you cost you precious time.
 
 So, dive into CHOMPMAN... and here's hoping you're a good speller!
 
+![Alt text](./chompman_img?raw=true "Optional Title")
+
 
 Install Instructions:
 In order to play the game you will need to:
