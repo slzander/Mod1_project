@@ -37,15 +37,18 @@ In order to play the game you will need to:
 Playing the Game:
 
 1. Following the opening animation, you will be asked for your name.
-   Type in what you would like the game to refer to you as, then press ENTER on your keyboard.
 
-2. The following screens will have instructions written out for you based on your choices and keyboard inputs.
+2. This is a good time to zoom in and resize your terminal to achieve the best quality for the game animations (your terminal        should look like the screen capture at the start of this README).
 
-      -^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-
+3. Type in what you would like the game to refer to you as, then press ENTER on your keyboard.
+
+4. The following screens will have instructions written out for you based on your choices and keyboard inputs.
+
+      -^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-
                                                                                                                
     IMPORTANT NOTE: During the game you must press ENTER after your inputs for the  game to register your answers 
                                                                                                                 
-      -v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-
+      -v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-
 
         
 If you'd like to watch a demo of the game: https://www.youtube.com/watch?v=AQxokXwMf0g&feature=youtu.be
