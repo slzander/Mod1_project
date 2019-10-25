@@ -1,6 +1,3 @@
-# require 'Paint'
-
-
 def shark_eating_swimmer_sequence
     system("clear")
     shark_eating_swimmer_21
