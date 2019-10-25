@@ -690,7 +690,7 @@ end
 
 def chompman_title_burp
     puts ""
-    puts "                                           WELCOME TO CHOMPMAN!"
+    puts "                                                 WELCOME TO CHOMPMAN!"
     puts ""
     puts "                                             ^`.                 (burp) "
     puts "                             ^`              \\  \\                 /   "
@@ -727,7 +727,7 @@ end
 
 def chompman_loser_burp
     puts ""
-    puts "                                                      YOU LOST!"
+    puts "                                                        YOU LOST!"
     puts ""
     puts "                                             ^`.                 (burp) "
     puts "                             ^`              \\  \\                 /   "
@@ -747,7 +747,7 @@ end
 
 def lonely_shark_win
     puts ""
-    puts "                                          CONGRATS! YOU SAVED THE DIVER!"
+    puts "                                            CONGRATS! YOU SAVED THE DIVER!"
     puts ""
     puts "                               ^`."
     puts "               ^`              \\  \\"
