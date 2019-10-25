@@ -7,7 +7,7 @@ reading a hint will you cost you precious time.
 
 So, dive into CHOMPMAN... and here's hoping you're a good speller!
 
-![Alt text](./chompman_img?raw=true "Optional Title")
+![image](./chompman_img.png?raw=true "chompman image")
 
 
 Install Instructions:
