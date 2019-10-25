@@ -70,12 +70,6 @@ class Cli
         show_shark
         display_blanks
         guess_a_letter_prompt
-        # puts ""
-        # puts '      Guess a letter!'
-        # puts '      If you need a hint, type  ? , but the shark will get closer!'
-        # puts '      Type  *  if you would like to guess the word'
-        # print "      "
-        # print SecretWord.find(game.secret_word_id).word.split("") #get rid of this later! just so that we can see the word for now...
         get_response
         guess_a_letter
     end
@@ -83,36 +77,25 @@ class Cli
 
     def guess_a_letter
         possible_letters = ('a'..'z').to_a
-        if possible_letters.include?(@@response) && @@guess.exclude?(@@response) #&& @@incorrect_letters.exclude?(@@response)
+        if possible_letters.include?(@@response) && @@guess.exclude?(@@response)
             if split_word.include?(@@response)
                 add_correct_guess(@@response)
                 win_game?
             elsif @@incorrect_letters.include?(@@response)
                 already_guessed_letter
-                # puts '      You must really want to be shark food - you already guessed that letter!'
-                # self.game.incorrect_guesses += 1
-                # end_game?
+
             else
-                add_incorrect_letter(@@response)    
-                # self.game.incorrect_guesses += 1 
-                #     @@incorrect_letters << @@response 
+                add_incorrect_letter(@@response)     
                 end_game?
             end
         elsif @@response == '?'
             show_hint
-            # guess_a_letter
         elsif @@response == '*'
             guess_word
-            # guess_a_letter
-        elsif @@guess.include?(@@response) #|| @@incorrect_letters.include?(response)
+        elsif @@guess.include?(@@response)
             already_guessed_letter
-            # puts '      You already guessed that letter! Guess again'
-            # guess_a_letter
         else
             invalid_entry
-            # puts '      That is not a valid input! Please type any single letter or *'
-            # get_response
-            # guess_a_letter
         end
     end
     
@@ -127,11 +110,6 @@ class Cli
         puts ''
         display_incorrect_guesses
         guess_a_letter_prompt
-        # puts ''
-        # puts '      Guess a letter!'
-        # puts '      If you need a hint, type  ? , but the shark will get closer!'
-        # puts '      Type  *  if you would like to guess the word'
-        # print '      '
         get_response
         guess_a_letter
     end
@@ -156,7 +134,6 @@ class Cli
         puts '      You must want your friend to be shark bait - you already guessed that letter!'
         puts ''
         puts '      Press ENTER to continue'
-        # guess_a_letter_prompt
         get_response
         end_game?
     end
@@ -170,10 +147,7 @@ class Cli
             puts "      #{@@guess.join}"
         end
         puts ''
-        # display_incorrect_guesses
         puts '      That is not a valid input!'
-        # puts ''
-        # puts '      Press ENTER to continue'
         guess_a_letter_prompt
         get_response
         guess_a_letter
@@ -195,10 +169,6 @@ class Cli
         puts ''
         puts "      The definition of this word is: #{self.game.secret_word.hint}"
         guess_a_letter_prompt
-        # puts ''
-        # puts '      Guess a letter!'
-        # puts '      Type  *  if you would like to guess the word'
-        # print "      "
         get_response
         guess_a_letter
     end
@@ -325,7 +295,7 @@ class Cli
         puts ""
         puts "      Thanks for adding a new word to the game!"
         puts ""
-        play_or_add_word
+        play_again?
     end
 
     def split_word
@@ -396,8 +366,6 @@ class Cli
     def best_score
         HighScore.order("score").last.score
     end
-
-   
 
     def final_score 
         score = 1/(self.game.incorrect_guesses + 1).to_f.round(3)
