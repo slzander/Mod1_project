@@ -143,8 +143,8 @@ class Cli
 
     def already_guessed_letter
         system('clear')
-        show_shark
         self.game.incorrect_guesses += 1
+        show_shark
         if @@guess == []
             display_blanks
         else
@@ -154,11 +154,9 @@ class Cli
         display_incorrect_guesses
         puts ''
         puts '      You must want your friend to be shark bait - you already guessed that letter!'
-        guess_a_letter_prompt
-        # puts '      Guess a letter!'
-        # puts '      If you need a hint, type  ? , but the shark will get closer!'
-        # puts '      Type  *  if you would like to guess the word'
-        # print "      "
+        puts ''
+        puts '      Press ENTER to continue'
+        # guess_a_letter_prompt
         get_response
         end_game?
     end
@@ -174,13 +172,9 @@ class Cli
         puts ''
         # display_incorrect_guesses
         puts '      That is not a valid input!'
-        guess_a_letter_prompt
         # puts ''
-        # puts '      Please type one of the following:'
-        # puts '          1. a single letter'
-        # puts '          2. *   (to guess the word)'
-        # puts '          3. ?   (for a hint)'
-        # print '      '
+        # puts '      Press ENTER to continue'
+        guess_a_letter_prompt
         get_response
         guess_a_letter
     end
