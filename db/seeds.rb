@@ -15,7 +15,7 @@ SecretWord.create(word: 'concatenate', hint:'Combine string, text, or other data
 SecretWord.create(word: 'instantiation', hint:'The realization of a predefined object', difficulty: 3)
 SecretWord.create(word: 'code', hint:'The language programmers use to tell a computer what to do', difficulty: 1)
 SecretWord.create(word: 'debugging', hint:'Finding and fixing problems in a program', difficulty: 2)
-SecretWord.create(word: 'bug', hint:'An error in a program preventing it from running as expected', difficulty: 1)
+SecretWord.create(word: 'bug', hint:'An error in a program preventingit from running as expected', difficulty: 1)
 SecretWord.create(word: 'git', hint:'A version control system', difficulty: 1)
 SecretWord.create(word: 'parameter', hint:'A variable in a method definition', difficulty: 2)
 SecretWord.create(word: 'argument', hint:'A value that is passed in to a command or function', difficulty: 2)
