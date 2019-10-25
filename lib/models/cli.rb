@@ -44,6 +44,31 @@ class Cli
         end
     end
 
+    def add_word_to_game
+        system('clear')
+        print chompman_title
+        print "      Type the word you would like to add:"
+        print "    "
+        new_word = gets.chomp
+        print "      Type the definition for the word:"
+        print "       "
+        new_definition = gets.chomp
+        prompt = TTY::Prompt.new
+        new_difficulty = prompt.select("      Rate the difficulty of the word:", ["       Easy", "       Medium", "       Hard"])
+        if new_difficulty == "       Easy"
+            new_difficulty = 1
+        elsif new_difficulty == "       Medium"
+            new_difficulty = 2
+        else
+            new_difficulty = 3
+        end
+        SecretWord.create(word: new_word, hint: new_definition, difficulty: new_difficulty)
+        puts ""
+        puts "      Thanks for adding a new word to the game!"
+        puts ""
+        play_again?
+    end
+
     def difficulty
         system('clear')
         puts chompman_title
@@ -62,7 +87,6 @@ class Cli
         else
             chosen_word = hard.sample
         end
-        # self.game = Game.create(user: self.user, secret_word: chosen_word, incorrect_guesses: 0, win?: false, score: 0)
         self.game.secret_word = chosen_word
         display_game
     end
@@ -75,7 +99,23 @@ class Cli
         get_response
         guess_a_letter
     end
-
+    
+    def show_shark
+        guesses = self.game.incorrect_guesses
+            if guesses == 0
+                puts approaching_shark_0
+            elsif guesses == 1
+                puts approaching_shark_1
+            elsif guesses == 2
+                puts approaching_shark_2
+            elsif guesses == 3
+                puts approaching_shark_3
+            elsif guesses == 4
+                puts approaching_shark_4
+            elsif guesses == 5
+                puts approaching_shark_5
+            end
+        end
 
     def guess_a_letter
         possible_letters = ('a'..'z').to_a
@@ -215,6 +255,18 @@ class Cli
         end
     end
 
+    def you_win
+        @@guess = SecretWord.find(game.secret_word_id).word
+        system('clear')
+        winner_diver_escape_sequence
+        puts ''
+        puts "      #{@@guess.capitalize}: #{self.game.secret_word.hint}"
+        puts ''
+        final_score
+        puts ''
+        play_again?
+    end
+
     def play_again?
         prompt = TTY::Prompt.new
         easy = SecretWord.all.select {|word| word.difficulty == 1}
@@ -245,60 +297,59 @@ class Cli
         end
     end
 
-    def you_win
-        @@guess = SecretWord.find(game.secret_word_id).word
-        system('clear')
-        winner_diver_escape_sequence
-        puts ''
-        puts "      #{@@guess.capitalize}: #{self.game.secret_word.hint}"
-        puts ''
-        final_score
-        puts ''
-        play_again?
-        # store_score
-    end
+    # def you_win
+    #     @@guess = SecretWord.find(game.secret_word_id).word
+    #     system('clear')
+    #     winner_diver_escape_sequence
+    #     puts ''
+    #     puts "      #{@@guess.capitalize}: #{self.game.secret_word.hint}"
+    #     puts ''
+    #     final_score
+    #     puts ''
+    #     play_again?
+    # end
 
-    def show_shark
-        guesses = self.game.incorrect_guesses
-            if guesses == 0
-                puts approaching_shark_0
-            elsif guesses == 1
-                puts approaching_shark_1
-            elsif guesses == 2
-                puts approaching_shark_2
-            elsif guesses == 3
-                puts approaching_shark_3
-            elsif guesses == 4
-                puts approaching_shark_4
-            elsif guesses == 5
-                puts approaching_shark_5
-            end
-        end
-
-    def add_word_to_game
-        system('clear')
-        print chompman_title
-        print "      Type the word you would like to add:"
-        print "    "
-        new_word = gets.chomp
-        print "      Type the definition for the word:"
-        print "       "
-        new_definition = gets.chomp
-        prompt = TTY::Prompt.new
-        new_difficulty = prompt.select("      Rate the difficulty of the word:", ["       Easy", "       Medium", "       Hard"])
-        if new_difficulty == "       Easy"
-            new_difficulty = 1
-        elsif new_difficulty == "       Medium"
-            new_difficulty = 2
-        else
-            new_difficulty = 3
-        end
-        SecretWord.create(word: new_word, hint: new_definition, difficulty: new_difficulty)
-        puts ""
-        puts "      Thanks for adding a new word to the game!"
-        puts ""
-        play_again?
-    end
+    # def show_shark
+    #     guesses = self.game.incorrect_guesses
+    #         if guesses == 0
+    #             puts approaching_shark_0
+    #         elsif guesses == 1
+    #             puts approaching_shark_1
+    #         elsif guesses == 2
+    #             puts approaching_shark_2
+    #         elsif guesses == 3
+    #             puts approaching_shark_3
+    #         elsif guesses == 4
+    #             puts approaching_shark_4
+    #         elsif guesses == 5
+    #             puts approaching_shark_5
+    #         end
+    #     end
+        
+        # def add_word_to_game
+        #     system('clear')
+        #     print chompman_title
+        #     print "      Type the word you would like to add:"
+        #     print "    "
+        #     new_word = gets.chomp
+        #     print "      Type the definition for the word:"
+        #     print "       "
+        #     new_definition = gets.chomp
+        #     prompt = TTY::Prompt.new
+        #     new_difficulty = prompt.select("      Rate the difficulty of the word:", ["       Easy", "       Medium", "       Hard"])
+        #     if new_difficulty == "       Easy"
+        #         new_difficulty = 1
+        #     elsif new_difficulty == "       Medium"
+        #         new_difficulty = 2
+        #     else
+        #         new_difficulty = 3
+        #     end
+        #     SecretWord.create(word: new_word, hint: new_definition, difficulty: new_difficulty)
+        #     puts ""
+        #     puts "      Thanks for adding a new word to the game!"
+        #     puts ""
+        #     play_again?
+        # end
 
     def split_word
         SecretWord.find(self.game.secret_word_id).word.split("")
